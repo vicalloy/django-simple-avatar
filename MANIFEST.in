@@ -1,0 +1,5 @@
+include README.txt
+include LICENSE.txt
+include simpleavatar/media/avatar/default.jpg
+recursive-include simpleavatar/templates/avatar *.html
+recursive-include simpleavatar/locale/*/LC_MESSAGES *.mo *.po
