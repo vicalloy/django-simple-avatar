@@ -8,7 +8,7 @@ from forms import AvatarForm
 
 from djangohelper.helper import request_get_next
 
-def change(request, extra_context={}, next=None):
+def change(request, template_name='avatar/change.html', extra_context={}, next=None):
     avatar_form = AvatarForm(user=request.user)
     if request.method == "POST":
         avatar_form = AvatarForm(request.POST, request.FILES, user=request.user)
@@ -18,7 +18,7 @@ def change(request, extra_context={}, next=None):
                 message=_("Successfully updated your avatar."))
         return HttpResponseRedirect(request_get_next(request) or next)
     return render_to_response(
-        'avatar/change.html',
+        template_name,
         extra_context,
         context_instance = RequestContext(
             request,
