@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.8.1'
+version = 0.8.2
 
 LONG_DESCRIPTION = """
 Using django-simple-avatar
@@ -131,6 +131,10 @@ setup(
     version=version,
     description="django-simple-avatar",
     long_description=LONG_DESCRIPTION,
+    install_requires=[
+        "django-helper>=0.8.1",
+        "PIL",
+        ],
     classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
