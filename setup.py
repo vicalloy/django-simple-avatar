@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
+import simpleavatar
 
-version = "0.8.2"
+version = simpleavatar.__version__
 
 LONG_DESCRIPTION = """
 Using django-simple-avatar
