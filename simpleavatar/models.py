@@ -18,7 +18,8 @@ try:
 except ImportError:
     import Image
 
-from simpleavatar import AVATAR_STORAGE_DIR, AVATAR_RESIZE_METHOD
+from simpleavatar.settings import AVATAR_STORAGE_DIR, AVATAR_RESIZE_METHOD, \
+        AUTO_GENERATE_AVATAR_SIZES
 
 def get_file_suffix(filename):
     idx = filename.rfind('.')
@@ -94,9 +95,6 @@ class Avatar(models.Model):
     
     def avatar_file_path(self, size):
         return avatar_file_path(instance=self, size=size)
-
-from django.conf import settings
-AUTO_GENERATE_AVATAR_SIZES = getattr(settings, 'AUTO_GENERATE_AVATAR_SIZES', (80,))
 
 def create_default_thumbnails(instance=None, created=False, **kwargs):
     #TODO delete old avatar
