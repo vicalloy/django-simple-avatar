@@ -2,11 +2,12 @@ import datetime
 import os.path
 
 from django.db import models
-from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
 from django.utils.translation import ugettext as _
 from django.core.files.storage import default_storage
 from django.db.models.signals import post_save
+
+from django.conf import settings
 
 try:
     from cStringIO import StringIO
@@ -54,7 +55,7 @@ def avatar_thumbnail_url(user, size):
     return default_storage.url(fn)
 
 class Avatar(models.Model):
-    user = models.OneToOneField(User, related_name='avatar', verbose_name=_('User'))
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='avatar', verbose_name=_('User'))
     avatar = models.ImageField(max_length=1024, upload_to=upload_avatar_file_path, blank=True)
     date_uploaded = models.DateTimeField(auto_now_add=True)
     
